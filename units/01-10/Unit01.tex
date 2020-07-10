@@ -1,0 +1,537 @@
+%RShields 4/16
+%51-69: no . after list items since they're not sentences
+%64: div
+%69: cdot
+%70: $A$
+%80-83: $B$ and related
+%87, 90, 91, 94: $$ to \[
+%102: $a$ $m$ $n$ and where->when
+%104: cdot
+%105: div
+%111: cdot
+%118: \[ and cdot
+%135, 138, 140: cdot
+%144: \[
+%147: Expanding
+%196: remove left and right, removed extra )
+%221, 230, 239: \[
+%285: grammar
+%292: non->Non
+%317: cdot
+%329, 332: div
+%362: $A$
+%364: div
+%374: cdot
+%376: $x$ and where->when
+%381: the->a
+%392: div
+%395: cdot
+%396: cdot
+%408: cdot
+%414, 415: cdot
+%446: cdot
+%455: cdot
+%471: \[
+%477-480: cdot div
+%486: div
+%507: $A$
+%528: the 'x's->$x$
+
+% Creative 4/22
+% editing box/frame syntax on all below lines
+% lines 73, 136, 155, 156, 157, 160, 161, 162, 180, 181, 182, 200, 201, 202, 208, 238, 255, 256, 257, 266, 267, 268, 275, 276, 277, 287, 288, 289, 296, 321, 328, 329, 330, 347, 348, 349, 366, 368, 369, 378, 404, 419, 421, 422, 427, 450, 462, 466, 467, 468, 489, 492, 493, 501, 504, 505, 506, 512, 549, 564, 565, 566, 579, 608
+
+\chapter{Algebra Review}
+
+\section {Indices}
+Nothing fancy here.
+When $a$ is a real number and $m$ and $n$ are positive integers, we have:
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+a^{m} \cdot a^{n} = a^{m+n} $$$$
+a^{m} \div a^{n} = a^{m-n}
+\end{formula}
+ \end{lstlisting} %RMK does not work when a < 0 and it is taken to certain fractional powers e.g. (-1)^(1/2) Besides, you talk about negatives and fractions later so you can just say, "When a is a real number and $m$ and $n$ are positive integers,"
+The power rule is an extension of the multiplication rule.
+
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+\left(a^{m}\right)^{n}=a^{m \cdot n}
+\end{formula}
+ \end{lstlisting}
+
+When you have several variables, however, you multiply the powers of the \textit{same} variable and multiply the constants together.
+\begin{example}{Rules of indices 1}
+Expand and simplify: $2x^4\cdot(-4x^2)^3$.
+\sep
+\begin{align}
+    2x^4\cdot(-4x^2)^3 & = 2x^4\cdot\left(-64x^6\right)\\&= -128x^{10}
+\end{align}
+\end{example}
+\begin{example}{Harder examples}
+Expand and simplify: $5x^{2}y^{3}\left(-2xy^{2}\right)^{3}\left(\frac {y^{3}}{2x^{2}}\right)^{2}$.
+\sep
+\begin{align}
+5x^{2}y^{3}\left(-2xy^{2}\right)^{3}\left(\frac{y^3}{2x^2}\right)^{2}&= (5x^{2}y^{3})\left(-8x^{3}y^{6}\right)\left(\frac{y^{6}}{4x^{4}}\right) \\
+    &= \left(5\cdot(-8)\cdot\frac{1}{4}\right)xy^{15}\\
+    &=-10xy^{15} 
+\end{align}
+\end{example}
+
+\section{Expanding brackets}
+Less words, more action.
+
+\begin{example}{Expanding double brackets}
+Expand and simplify: $(3x-5)(2x+7)$
+\sep
+\begin{align}
+(3x-5)(2x+7) & = 6x^2 + 21x - 10x - 35\\&= 6x^2 + 11x - 35
+\end{align}
+\end{example}
+
+You can expand more than two brackets using the same process.
+There are special products that you can use, without wasting valuable time, to expand the brackets.
+
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+(A+B)^{2} = A^{2} + B^{2} + 2AB$$$$
+(A-B)^2 = A^2 + B^2 - 2AB$$$$
+(A-B)(A+B) = A^{2}-B^{2}
+\end{formula}
+ \end{lstlisting}
+
+\begin{example}{Special products}
+Expand and simplify: (a) $(3x-5)^{2}$ \hspace{1cm} (b) $(2x+1)^{3}$.
+\sep
+(a) $(3x+5)^2=9x^2+30x+25$
+
+(b) $(2x+1)^3=8x^3+3\cdot4x^2\cdot1+3\cdot2x\cdot1+1=8x^3+12x^2+6x+1$
+\end{example}
+
+\begin{questions}{Drills}
+There might be more than one way to solve a question.
+Be lazy and pick the shortest way.
+
+Expand and simplify these expressions.
+\begin{question_set}(3)
+    \item $(a+3)(4+a)$
+    \item $(5-n)(2n+7)$
+    \item $(2m+n)(2m-n)$
+    \item $(5xy+2)(4y-3x)$
+    \item $(4a+2b)(3ba-2ab)$
+    \item $(5a-8)(5a+9)$
+\end{question_set}
+
+Using special products, expand and simplify these expressions.
+\begin{question_set}(3)
+    \item $(3x-2)^{2}$
+    \item $(4-3x)^{2}$
+    \item $\left(2x-\frac {3}{x}\right)^{3}$
+    \item $\left(4x^{2}-3xy\right)^{3}$
+    \item $(2a+3b-c)^2$
+    \item $\left(5x^{2}y^{3}-2xy^{2}\right)^{3}$
+\end{question_set}
+\end{questions}
+
+\section{Factorisation}
+This perhaps is the most important technique to have under your belt when you're running out of time. Often used in solving equations, don't undermine the importance of this technique.
+
+There are many ways to factorise a polynomial, but we'll only discuss four methods here.
+\begin{itemize}
+    \item Common factor
+    \item Special products
+    \item Grouping terms
+    \item Splitting terms
+\end{itemize}
+
+
+\subsection{Common factor}
+
+The easiest method to factorise a polynomial: looking for the greatest common factor.
+\begin{example}{Common factor}
+Factorise completely: $5x^{2}(x-2y)-15x(x-2y)$.
+\sep
+$5x(x-2y)$ is the common factor.
+
+\[ 5x^{2}(x-2y)-15x(x-2y)=5x(x-2y)(x-3) \]
+\end{example}
+
+\subsection{Special products}
+
+Using the five special products we've seen in the previous section, you can factorise many polynomials.
+\begin{example}{Special products}
+Factorise completely: $1-8b^{3}$.
+\sep
+\[ 1-8b^{3}=(1)^{3}-(2b)^{3}=(1-2b)\left(1+2b+4b^{2}\right) \]
+\end{example}
+
+\subsection{Grouping terms}
+
+Self-explanatory: you rearrange the orders of the terms so that you can group them. In many cases, you'll need to use all 3 methods.
+\begin{example}{Put it all together}
+Factorise $x^{4}-9x^{3}-x^{2}+9x$.
+\sep
+\[ x^{3}(x-9)-x(x-9)=x\left(x^{2}-1\right)(x-9)=x(x-1)(x+1)(x-9) \]
+\end{example}
+
+\subsection{Factorising trinomials}
+
+\textbf{NB:} Not all trinomials are factorisable.
+
+To factorise a trinomial in the form $ax^{2}+bx+c$, you need to find two numbers so that their sum is b and their product is ac. Then by playing with the signs you replace the 'bx' term with the 2 terms you've just found. %RMK there exists a method to factor any quadratic: let p(x) = x^2 + bx + c. Then p(x) = (x+r)(x+s) where r+s = b and rs = c. Then r = b/2 + t and s = b/2 - t for some t. So c = rs = (b/2+t)(b/2-t) = b^2/4 - t^2, and t = +/- sqrt(b^2/4 - c) = +/- sqrt(b^2 - 4c)/2. This technique can even be used to prove the quadratic formula.
+
+\begin{example}{Ah quadratics}
+Factorise $x^{2}+11x+24$.
+\sep
+We need to find two numbers that add up to 11 and their product is 24. By listing the factors of 24, you can conclude that the two numbers are 3 and 8.
+
+The $11x$ in this trinomial is split into $3x$ and $8x$.
+
+Therefore, $x^{2}+11x+24=x^{2}+3x+8x+24=x(x+3)+8(x+3)=(x+8)(x+3)$
+\end{example}
+\begin{questions}{Drills}
+Factorise completely.
+\begin{question_set}(3)
+    \item $x^{2}-25$
+    \item $4x^{3}+24x^{2}-12xy^{2}$
+    \item $4x^{2}(x-y)+9y^2(y-x)$
+\end{question_set}
+Factorise completely.
+\begin{question_set}(2)
+    \item $4x^{2}-25$
+    \item $36x^{2}-(3x-2)^{2}$
+    \item $64x^{3}+1$
+    \item $x^{3}y^{6}z^{9}-125$
+    \item $x^{6}-y^{6}$
+    \item $y^{9}-9x^{2}y^{6}+27x^{4}y^{3}-27x^{6}$
+\end{question_set}
+Factorise completely.
+\begin{question_set}(3)
+    \item $4x^{2}+4x-3$
+    \item $6x^{2}+7x+2$
+    \item $-x^{2}+25x-150$
+    \item $12x^{4}+7x^{3}-12x^{2}$
+    \item $x^{2}+2xy-3y^{2}$
+    \item $x^{4}-14x^{2}+24$
+\end{question_set}
+\end{questions}
+
+\subsection{Simplifying rational expressions}
+A quick recap. A rational expression only exists when the denominator is non-zero. The values that make the denominator equal to 0 are called the non-permissible values.
+
+For instance, the non-permissible value of $\frac{2}{2x-3}$ is where $2x-3=0$, or $x=1.5$
+
+\begin{example}{Get to work}
+Find the non-permissible value(s) and simplify the expression: $\frac{\left(x^{3}+64\right)}{(3-x)\left(x^{2}-4x+16\right)}$.
+\sep
+(1) Non-permissible values: $(3-x)\left(x^{2}-4x+16\right)=0$
+Notice that $\left(x^{2}-4x+16\right)$ is greater than 0 for all values of $x$, therefore the only non-permissible value if $x=3$.
+
+(2) Factorise both the numerator and the denominator, then simplify the expression. $64=4^{3}$, so the numerator is in the form $a^{3}+b^{3}$.
+$\frac{(x+4)\left(x^{2}-4x+16\right)}{\frac{3-x}{\left(x^{2}-4x+16\right)}}=\frac{x+4}{3-x}$
+\end{example}
+
+\subsection{Operations with rational expressions}
+\textbf{Addition and Subtraction}
+
+To add two fractions with the same denominator, we use a common denominator.
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}
+\end{formula}
+ \end{lstlisting} %RMK could add the intermediate step \frac{ad}{bd}+\frac{bc}{cd} to clarify
+Do \textbf{NOT} add the numerators together and the denominator together. %RMK could add an example to show why this is bad a la \tfrac{1}{2} + \tfrac{1}{2} \neq \tfrac{2}{4} = \tfrac{1}{2}
+
+\begin{example}{Adding and subtracting fractions}
+Subtract: $\frac{x+1}{2x-2}-\frac{2x}{x^{2}-1}$.
+\sep
+(1) Factorise numerators and denominators.
+$\frac{x+1}{2(x-1)}-\frac{2x}{(x-1)(x+1)}$
+
+(2) Determine the common denominator: $2(x-1)(x+1)$
+
+(3) Add the fractions.
+$\frac{(x+1)(x+1)-2 \cdot 2x}{2(x+1)(x-1)}=\frac{x^{2}+2x+1-4x}{2(x-1)(x+1)}$
+
+(4) Simplify the fraction obtained.
+$=\frac{(x-1)^{2}}{2(x+1)(x-1)}=\frac{x-1}{2(x+1)}$.
+\end{example}
+
+We multiply fractions as followed.
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+\frac{a}{b} \cdot \frac{c}{d}=\frac{ac}{bd}
+\end{formula}
+ \end{lstlisting} %RMK add a note about division
+\begin{example}{Inverse multiplication}
+Divide.
+$\frac{4x^{2}+4x+1}{4x^{3}-6x^{2}} \div \frac{8x^{3}+12x^{2}+6x+1}{4x^{3}-9x}$.
+\sep
+(1) Factorise both fractions completely.
+$\frac{(2x+1)^{2}}{2x^{2}(2x-3)} \div \frac{(2x+1)^{3}}{x(2x-3)(2x+3)}$
+
+(2) Inverse multiplication: $\frac{(2x+1)^{2}}{2x^{2}(2x-3)} \cdot \frac{(2x+1)^{3}}{x(2x-3)(2x+3)}$
+
+(3) Multiply: $\frac{2x+3}{2x(2x+1)}$
+
+\end{example}
+\begin{questions}{Drills}
+Simplify these expressions. Find the non-permissible values.
+\begin{question_set}(2)
+    \item $\frac{9x^{2}-24x+16}{16-9x^2}$
+    \item $\frac{x{3}-4x}{5x^{2}+20x+20}$
+    \item $\frac{35\left(x^{2}-y^{2}\right)(x+y)^{2}}{77(y-x)^{2}(x+y)^{3}}$
+    \item $\frac{27a^{9}-125b^{6}}{18a^{7}+30a^{4}b^{2}+50ab^{4}}$
+\end{question_set}
+
+Simplify. Find the non-permissible values.
+\begin{question_set}(2)
+    \item $\frac{3x+1}{(x-1)^{2}}-\frac{1}{x-1}-\frac{x-3}{6-x^2}$
+    \item $\frac{3(x-2)(x+1)}{x^{3}-9x}-\frac{x-1}{x^{2}-3x}$
+    \item $\frac{6x^{2}-x-15}{8x^{2}+14x+3}+\frac{15x^{2}+x-28}{12x^{2}-13x-4}$
+    \item $\frac{x+6}{x+3}-\frac{x+3}{x+7}+\frac{x^{2}+9x+6}{x^{2}+10x+21}$
+\end{question_set}
+
+Simplify. Find the non-permissible values.
+\begin{question_set}(2)
+    \item $\frac{x^{3}+y^{3}}{x^{3}y-x^{2}y^{2}+xy^{3}}.\frac{\left(x^{2}-xy\right)^{2}}{x^{2}-y^{2}}$
+    \item $\frac{\left(x^{3}-1\right)\left(x^{2}+1\right)}{x^{2}-1} \div \frac{x^{4}-1}{x^{3}+1} \div \frac{x^{4}+x^{2}+1}{x^{4}-x^{2}+1}$ %RMK add a note about order of operations, with special attention to the fact that in a \div \frac{b}{c} you do the frac first
+\end{question_set}
+
+Find $A$.
+
+$\left(\frac{x+3y}{5z-3y}-\frac{5z-3y}{x+3y}\right) \div A=\frac{3y+5z}{x+3y}+\frac{3y-x}{5z-3y}$
+\end{questions}
+\section{Negative and rational indices}
+\subsection{Negative indices}
+Consider the fraction 9/81.
+If we simplify this fraction, we'll get $\frac{1}{9}$
+However, we also know that $9=3^{2}$ and $81=3^{4}$
+Performing the division and using index rules, we have $\frac{9}{81}=\frac{3^{2}}{3^{4}}=3^{-2}$.
+Therefore, $3^{-2}=\frac{1}{3^2}=\frac{1}{9}$
+
+$x^{-m}$ is called the \textit{reciprocal} of $x^{m}$, since $x^{m} \cdot x^{-m}=1$ %RMK could do = x^0 = 1 %RMK push this below the definition
+
+When $x$ is non-zero, we have
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+x^{-m}=\frac{1}{x^{m}} 
+\end{formula}
+ \end{lstlisting}
+\begin{example}{Negative Indices}
+Simplify the following, writing answers with positive indices. Confirm your answer using a calculator.
+(a) $4^{-2}$ \hspace{1cm} (b)$\left(\frac{3}{4}\right)^{-3}$.
+\sep
+(a) $4^{-2}=\frac{1}{4^2}=\frac{1}{16}$$$$$
+(b) $\left(\frac{3}{4}\right)^{-3}=\left(\frac{4}{3}\right)^{3}=\frac{64}{27}$
+\end{example}
+
+\begin{questions}{Drills}
+Simplify.
+\begin{question_set}(3)
+    \item $\left(4mn^{3}\right)^{2}.\left(-2m^{3}n\right)$
+    \item $y^{4}\left(y^{28} \div y^{2}\right)$
+    \item $y \times \left(y^{7}\right)^{9}$
+    \item $\frac{5^{2y}}{5^{y+1}}$
+    \item $\frac{4x^{\frac{2}{3}} \cdot 3x^\frac{-1}{-6}}{6x^{\frac{3}{4}}}$
+    \item $\frac{2a \cdot a^{\frac{3}{4}}}{8a^\frac{-1}{2}}$ %RMK this looks very close to 8a times -1/2. In these cases, you should do a^{-1/2} %RMK you don't tak about fractional powers until next section
+\end{question_set}
+
+Express each of the following in the form $3^{y}$ where $y$ is a function of $x$.
+\begin{question_set}(3)
+    \item $81^{x+1}$
+    \item $27^{\frac{x}{4}}$
+    \item $\left(\frac{1}{27}\right)^{x+2}$
+\end{question_set}
+
+Evaluate.
+\begin{question_set}(2)
+    \item $\frac{(-3)^{2}(-15)^{6}8^{4}}{9^{2}(-5)^{6}(-6)^{4}}+\frac{3^{15}+3^{14}}{3^{14}+3^{12}} \cdot \frac{(-2)^{9}}{1024}$
+    \item $\frac{(-18)^{7}(2)^{4}(-50)^{3}}{(-25)^{4}(-4)^{5}(-27)^{2}}$
+\end{question_set}
+\end{questions}
+
+\subsection{Rational indices}
+We know that $4^{3}=4 \cdot 4 \cdot 4$, but what do we mean by saying $4^{\frac{1}{2}}$?
+From the multiplication rule, we can deduce that $4^{\frac{1}{2}} \cdot 4^{\frac{1}{2}}=4^{1}=4$, hence $4^{\frac{1}{2}}$ is the square root of 4, aka $\sqrt{4}$.
+
+This definition gives us a way to calculate expressions such as $(-27)^{\frac{1}{3}}=-3$. %RMK talk about what happens with (-1)^(1/2) and why it's bad or why we cover it later or whatever
+
+General case: if $m$ and $n$ are positive integers with no common factors, then
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+b^{\frac{m}{n}} = \left(\sqrt[n]{b}\right)^{m}
+\end{formula}
+ \end{lstlisting}
+\begin{thinking}{~}
+Why do we have the formula above?
+\end{thinking}
+
+\begin{example}{Rational indices}
+Evaluate (a) $(-32)^{\frac{-4}{5}}$ \hspace{1cm} (b) $\left(\frac{1}{81}\right)^{\frac{-3}{4}}$.
+\sep
+(a) $(-32)^{\frac{-4}{5}}=\left(-2^{5}\right)^{\frac{-4}{5}}=(-2)^{-4}=\frac{1}{2^{4}}=\frac{1}{16}$
+
+(b) $\left(\frac{1}{81}\right)^{\frac{-3}{4}}=(81)^{\frac{3}{4}}=\sqrt[4]{81}^{3}=3^{3}=27$
+\end{example}
+
+\subsection{Surds}
+Surds is the topic that many students \textit{dread} at GCSE.
+You should be relatively comfortable manipulating surds at HL, which is basically adding similar radicals. Square roots occur frequently in several of the topics in this course, such as trigonometry and calculus.
+
+First off, let's recap what surds are. Basically, a surd is a number written \textbf{exactly} using roots. Example: $\sqrt[3]{5}$ is a surd.
+\textbf{However}, $\sqrt{4}$ and $\sqrt[3]{27}$ are not surds as they can be further simplified to 2 and 3.
+
+Adding surds is basically adding like terms. For instance, $2\sqrt{3}+3\sqrt{3}=5\sqrt{3}$ \textbf{not} $5\sqrt{6}$. %RMK should add a bit more explanation as to what's going on here
+
+For positive values of A and B, we have:
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+\sqrt{A \cdot B}=\sqrt{A} \cdot \sqrt{B}$$$$
+\sqrt{\frac{A}{B}}=\frac{\sqrt{A}}{\sqrt{B}} (B > 0)
+\end{formula}
+ \end{lstlisting}
+
+\begin{example}{Addition of surds}
+Simplify:
+(a) $\sqrt{72}$ \hspace{1cm}
+(b) $\sqrt{72}-5\sqrt{2}$.
+\sep
+(a) $\sqrt{72}=\sqrt{36 \cdot 2}=\sqrt{36} \cdot \sqrt{2}=6 \cdot \sqrt{2}$
+
+(b) $\sqrt{72}-5\sqrt{2}=6\sqrt{2}-5\sqrt{2}=\sqrt{2}$
+\end{example}
+
+\subsection{Rationalising the denominator}
+When writing fractions we want to avoid writing surds in the denominator, simply because it intimidates readers. The surds can be cleared by multiplying the top and bottom of the fraction by the same number. If the denominator is in the form $(a-\sqrt{b})$ you need to multiply both top and bottom by $(a+\sqrt{b})$, the \textbf{conjugate}, to get rid of the square root. %RMK the reason we used to not do that is because you can't put surds into a slide rule. In general, we no longer care. However, it is extremely useful to do this when solving for something like the real part of a complex fraction, or when we need to break the fraction up into something like a/b + c/d sqrt(n)
+\begin{thinking}{~}
+Why do we multiply both the numerator and denominator by the denominator's conjugate?
+\end{thinking}
+\begin{example}{Rationalise the denominator}
+Rationalise the following fraction: $\frac{7}{3-\sqrt{2}}$.
+\sep
+The conjugate of $3-\sqrt{2}$ is $3+\sqrt{2}$.
+Multiply both the top and bottom with $3+\sqrt{2}$, we have:
+
+\[ \frac{7}{3-\sqrt{2}}=\frac{7}{3-\sqrt{2}} \cdot \frac{3+\sqrt{2}}{3+\sqrt{2}}=\frac{7\left(3+\sqrt{2}\right)}{9-2}=\frac{7\left(3+\sqrt{2}\right)}{7}=3+\sqrt{2} \]
+\end{example}
+\begin{questions}{Drills}
+Without using a calculator, evaluate each expression.
+\underline{Hint}: Be lazy. %RMK you don't need an underline here, the existence of a hint is already an attention-grabber
+\begin{question_set}(2)
+    \item $4^{\frac{3}{2}}+8^{\frac{2}{3}}$
+    \item $\frac{\sqrt[5]{4} \cdot \sqrt[4]{64} \cdot \left(\sqrt[3]{\sqrt{2}}\right)^{4}}{\sqrt[3]{\sqrt{32}}}$
+    \item $\left(4^{\frac{1}{3}}-10^{\frac{1}{3}}+25^{\frac{1}{3}}\right)\left(2^{\frac{1}{3}}+5^{\frac{1}{3}}\right)$
+    \item $\frac{2^{3} \cdot 2^{-1}+5^{-3} \cdot 5^{4}-(0.01)^{-2} \cdot 10^{-2}}{10^{-3} \div 10^{-2}-(0.25)^{0}+10^{-2}\sqrt{0.01^{-3}}}$
+\end{question_set}
+
+Simplify as far as possible.
+\begin{question_set}(2)
+    \item $\frac{\sqrt[3]{a}-\sqrt[3]{b}}{\sqrt[6]{a}-\sqrt[6]{b}}$
+    \item $\left(\sqrt{ab} -\frac{ab}{a+\sqrt{ab}}\right) \div \frac{\sqrt[4]{ab}-\sqrt{b}}{a-b}$
+\end{question_set}
+Rationalise the denominator.
+\begin{question_set}(3)
+    \item $\frac{1}{2\sqrt{5}}$
+    \item $\frac{6+2\sqrt{6}}{\sqrt{6}}$
+    \item $\frac{\sqrt{8}}{\sqrt{12}}$
+    \item $\frac{9}{5+\sqrt{7}}$
+    \item $\frac{22}{6-\sqrt{3}}$
+    \item $\frac{\left(4-\sqrt{2}\right)\left(4+\sqrt{2}\right)}{\sqrt{11}-\sqrt{7}}$
+\end{question_set}
+Simplify.
+\begin{question_set}(2)
+    \item $\frac{1}{2}\sqrt{5 \frac{1}{3}}-\sqrt{243}+\sqrt{147}+\frac{1}{2}\sqrt{27}$
+    \item $\left(\sqrt{75}-\sqrt{18}-\sqrt{12}\right)\left(\sqrt{3}+\sqrt{2}\right)$
+\end{question_set}
+Simplify.
+\begin{question_set}(2)
+    \item $\sqrt{28-16\sqrt{3}}-\sqrt{48-24\sqrt{3}}$
+    \item $\sqrt{3-\sqrt{5}} \cdot \sqrt{\frac{\sqrt{5}+11}{7-2\sqrt{5}}}$
+\end{question_set}
+Simplify $A$ and find the maximum value of $A$.
+
+$A=\frac{3\left(x+\sqrt{x}-3\right)}{x+\sqrt{x}-2}+\frac{\sqrt{x}+3}{\sqrt{x}+2}-\frac{\sqrt{x}-2}{\sqrt{x}-1}$.
+\end{questions}
+
+\section{Inequalities}
+When working with inequalities, use the following rules.
+
+\b{Rule 1}: You can add any number to both sides of an inequality, and two inequalities can be added. \b{However}, we cannot be certain about the signs of the new inequality if you subtract one inequality from the other. %RMK subtraction does not exist. Only adding the inequality multiplied by -1 on both sides. Rule 2.
+\b{Example}: $-2 < 3, -3 < 3.$
+Subtract (-3) from LHS and 1 from RHS of the first inequality, you have $1 < 0$! %RMK you cannot end with a number followed by ! since this is the factorial symbol.
+
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+a < b \Rightarrow a+c<b+c.
+\end{formula}
+ \end{lstlisting} %RMK students will not necessarily be familiar with the => notation
+
+\b{Rule 2}: We can multiply both sides of an inequality by a positive number, but if we multiply both sides of an inequality by a negative number we \i{reverse} the direction of the inequality. %RMK suggestion; We can multiply both sides of an inequality by a positive number and the inequality will still hold. However, if we multiply both sides of an inequality by a negative number, we have to reverse the direction of the inequality.
+
+\begin{example}{Linear inequality}
+Solve the inequality $1+x<7x+5$.
+\sep
+Isolate $x$:
+\begin{center}
+\centering $-6x < 4$
+\end{center}
+Divide both sides by -6.
+\b{Remember to switch the sign!}
+
+\begin{center}
+\centering $x>\frac{-2}{3}$
+\end{center}
+\end{example}
+
+\begin{questions}{Drills}
+Solve each inequality.
+\begin{question_set}(2)
+    \item $3-\frac{1}{4}x>2$
+    \item $5-\frac{1}{3}x>2$
+    \item $\frac{15-6x}{3}>5$
+    \item $\frac{8-11x}{4}<13$
+    \item $\frac{1}{4}.(x-1)<\frac{x-4}{6}$
+    \item $\frac{2-x}{3}<\frac{3-2x}{5}$
+\end{question_set}
+Solve each inequality.
+\begin{question_set}(2)
+    \item $8x+3(x+1)>5x-(2x-6)$
+    \item $2x(6x-1)>(3x-2)(4x+3)$
+    \item $x^{2}-3x+1>2(x-1)-x(3-x)$
+    \item $(x-1)^{2}+x^{2}\leq (x+1)^{2}+(x+2)^{2}$ %RMK make a note about what \leq means
+\end{question_set}
+Solve each inequality.
+\begin{question_set}(2)
+    \item $\frac{x-1}{2}-\frac{7x+3}{15}\leq \frac{2x+1}{3}+\frac{3-2x}{5}$
+    \item $\frac{2x+1}{-3}-\frac{2x^{2}}{-4}>\frac{x(5-3x)}{-6}-\frac{4x+1}{-5}$
+    \item $\frac{4x-2}{3}-x+3 \leq \frac{1-5x}{4}$
+    \item $\frac{x+4}{5}-x-5\geq \frac{x+3}{3}-\frac{x-2}{2}$
+\end{question_set}
+Solve each inequality.
+\begin{question_set} (2)
+    \item $-1<\frac{x+1}{6}-\frac{x-2}{2}<1$
+    \item $x-1<\frac{2x-1}{3}-1<2x+4$
+\end{question_set}
+\end{questions}
+
+\section{Modulus}
+The modulus of a number $a$, also known as the absolute value of a number $a$, denoted by $|a|$, is the distance from $a$ to 0 on the real number line. Distances are always positive or 0, so we have $|a|\geq 0$ for every number $a$. %RMK unfinished?

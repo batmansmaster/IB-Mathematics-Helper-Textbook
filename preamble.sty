@@ -1,0 +1,177 @@
+\usepackage[utf8]{inputenc}
+\usepackage{listings}          % just for this document
+
+% document layout
+\usepackage{titlesec}
+\usepackage[margin=1in]{geometry} % margins
+\usepackage{comment}
+\usepackage{appendix}
+\usepackage{subfiles}
+\usepackage{parskip}
+\setlength{\parskip}{1em plus 0.1em minus 0.1em} % paragraph spacing
+\usepackage{microtype}
+
+% hyperlinks
+\usepackage{hyperref}
+
+% math
+\usepackage{mathtools} % loads amsmath
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+% \usepackage{amsthm}
+\usepackage[super]{nth}
+
+% figures and plots
+\usepackage{xcolor}
+\usepackage{rotating}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usepackage{pgfplots}
+\pgfplotsset{compat = 1.16} % compatibility
+
+% text superscripts
+\usepackage[super]{nth}
+\newcommand\tss\textsuperscript
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green!40!black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{physics}
+\usepackage{longtable}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{tasks}
+\NewTasksEnvironment[
+    style = enumerate,
+    after-item-skip = -0.3em,
+    after-skip = 0.5em,
+]{question_set}[\item]
+
+% horizontal rule
+% \usepackage{dashrule}
+% \newcommand{\hr}[1][black]{{\noindent\color{#1}\hdashrule[0.5ex][x]{\textwidth}{1pt}{3pt}}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=green!40!black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{physics}
+\usepackage{longtable}
+
+\title{Helper Mathematics Textbook Formatting Guide}
+\author{IBO Helpers}
+\date{June 2020}
+
+\definecolor{maincs}{RGB}{177,0,39}
+\definecolor{secondarycs}{RGB}{255,179,246}
+\definecolor{tertiarycs}{RGB}{0,149,86}
+
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily}
+
+\tcbset{% default box environment settings
+    center,
+    enhanced,
+    % boxrule = 2pt,
+    boxsep = 6pt,
+    arc = 3pt,
+    fonttitle = \bfseries\large,
+    coltitle= black,
+    attach boxed title to top left={% boxed title placement
+        yshift = -3mm,
+        yshifttext = -1mm,
+        xshift = 5mm,
+    },
+    subtitle style = {% subtitle
+        before skip = \baselineskip
+    },
+    highlight math style={% formula boxes
+        colback=colorformula!15,
+        colframe=colorformula
+    }
+}
+
+\newcommand{\makeboxtype}[4][]{% box environment creation command
+    \newtcolorbox[auto counter, number within=section]{#2}[2][]{
+        colback = #4!15,
+        colframe = #4,
+        colbacktitle = #4!50,
+        title = {##2},
+        before title = {#3},
+        #1,
+        ##1
+    }
+}
+
+% horizontal rule
+\newcommand{\hr}[1][black]{{\noindent\color{#1}\hdashrule[0.5ex][x]{\textwidth}{1pt}{3pt}}}
+
+% Color definitions (corresponding with the environments)
+\colorlet{colorexample}{orange}
+\colorlet{colorthinking}{pink}
+\colorlet{colordefinition}{red}
+\colorlet{colorproof}{yellow!80!purple}
+\colorlet{colorinsight}{pink}
+\colorlet{colortheorem}{blue}
+\colorlet{colorextension}{violet}
+\colorlet{colorsummary}{lime!85!black}
+\colorlet{colorformula}{teal!40!black}
+
+% Creation of different box environments
+\makeboxtype{example}{Example \thetcbcounter: }{colorexample}
+\makeboxtype{thinking}{Thinking Question \thetcbcounter: }{colorthinking}
+\makeboxtype{definition}{Definition \thetcbcounter: }{colordefinition}
+\makeboxtype{proof}{Proof \thetcbcounter: }{colorproof}
+\makeboxtype{insight}{Insight \thetcbcounter: }{colorinsight}
+\makeboxtype{theorem}{Theorem \thetcbcounter: }{colortheorem}
+\makeboxtype{extension}{Extension \thetcbcounter: }{colorextension}
+\makeboxtype{summary}{Summary \thetcbcounter: }{colorsummary}
+\makeboxtype{questions}{Questions \thetcbcounter: }{colorformula}
+% \makeboxtype{formula}{Formula \thetcbcounter: }{colorformula}
+
+% Formula box
+\newcommand{\formula}[3][colorformula]{
+    \if\relax\detokenize{#3}\relax
+      \begin{equation*}
+        \tcbhighmath[colback=#1!15, colframe=#1]{#2}
+    \end{equation*}
+    \else
+      \begin{equation*}\label{eq:#3}\tag{#3}
+        \tcbhighmath[colback=#1!15, colframe=#1]{#2}
+    \end{equation*}
+    \fi
+}
+% \renewenvironment{formula}{THIS NEEDS FIXING \begin{lstlisting}}{\end{lstlisting}}
+
+% Example text
+\newcommand{\filltext}{This is a bunch of filler text. Ignore this text. Do not read this text. There is no information contained within this text. This text simply exists to fill the space within whatever container this text exists in.}
+
+% redefined align environment (because spacing issues)
+\renewenvironment{align}[1][]{\[\begin{aligned}[#1]}{\end{aligned}\]}
+
+% renaming tcolorbox macros/introducing horizontal rules
+\newcommand\subtitle\tcbsubtitle
+\newcommand\sep\tcblower
+
+\renewcommand{\b}[1]{\textbf{#1}} % bold shorthand
+\renewcommand{\i}[1]{\emph{#1}} % italics shorthand
+\newcommand{\n}[1]{\text{#1}} % text in math environment shorthand
+
+% referencing discord users
+\newcommand{\user}[1]{{\fontfamily{cmtt}\selectfont#1}}
+
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}

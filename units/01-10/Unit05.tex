@@ -1,0 +1,84 @@
+\chapter{Introduction to Statistics}
+
+\section{Types of Data}
+Whether from a scientific or social study, data are collected in large volumes and it is in our best interest to summarise the data effectively. This is the essence of statistics, and this chapter will provide an introduction to fundamental concepts.
+
+Before considering data sets, we must familiarise ourselves with the difference between a \textbf{population} and a \textbf{sample}. The population is a large group that we are interested in, for example all students at a high school. A sample is a subset of the population from which we collect data. Ideally we should take a \textbf{random sample}, meaning that each member of the population has an equal chance of being sampled and is not affected by the other members. Although it is unlikely that the statistics from a sample will exactly match the statistics from the whole population, we can strive to be as close as possible. For that reason, taking a random sample is preferred. Despite this, sometimes unusual values that do not follow the same trend or pattern as the rest of the data can arise. Those are known as \textbf{outliers}.
+
+Numerical data can be classified as one of two types. The first is \textbf{discrete data}, which is such that the possible values are defined and countable. They do not necessarily have to be integers but they must be particular values. An example of discrete data is the number of rainy days per month. Meanwhile, \textbf{continuous data} can take infinitely many possible values within a range. Examples of continuous data include height and weight.
+
+Discrete data is easy to work with as we can simply count the number of data points for each value that we have defined. To work with continuous data, we need to subdivide it into groups; it is impractical to quantify the exact value of a continuous data point. Counting the number of students that weigh, say, 66.23492\dots kg, is redundant. Instead, we could count the number of students that weigh between 65.0 and 70.0 kg. If we were to introduce rounding, suppose to the nearest 0.1 kg, then our data set could be considered discrete instead of continuous, since the weight values are fixed.
+
+\section{Descriptive Statistics}
+Most of this section
+
+\section{Standard Deviation and Variance}
+In this section, we will introduce a new statistic that helps us describe how spread out the data is. The range only tell us about the distance between the extreme ends of the data set, which could be skewed by outliers. Often, we are interested in whether the data is densely concentrated near the mean. Fortunately, we have a statistic that accomplishes this, called the \textbf{standard deviation}. Moreover, the square of the standard deviation is known as the \textbf{variance}. 
+
+Standard deviation is denoted by the lowercase Greek letter sigma $\sigma$. First, we calculate the variance, which is essentially calculating the ``distance" of each point from the mean and taking the average of those distances.
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+\sigma^2 = \sum_{i=1}^n \frac{(x_i-\bar{x})^2}{n}
+\end{formula}
+ \end{lstlisting}
+In the above formula, $x_i$ is the $i$th data point, $n$ is the size of the data set, and $\bar{x}$ is the mean of the data set. Remember that this formula only gives us the variance; the standard deviation is the square root of the variance. Admittedly this is a tedious calculation; a calculator can give us this value much faster! For that reason, you will rarely be asked to directly calculate the standard deviation of a data set.
+
+There is another method to calculate variance which is often faster. It is given by:
+
+{\hfill\Large\bfseries NEEDS FIXING\hfill}
+\begin{lstlisting}
+\begin{formula}
+\sigma^2 = \overline{x^2} - \bar{x}^2
+\end{formula}
+ \end{lstlisting}
+
+$\overline{x^2}$ is the mean of the data set with each point squared, and $\bar{x}^2$ is the original mean squared.
+
+\begin{example}{Mean and Standard Deviation}
+A basketball player recorded the number of points he scored in each of his first 8 games of the season. The data is as follows:
+\begin{align}
+    20, 11, 16, 25, 26, 18, 29, 27
+\end{align}
+Find the mean, range, and standard deviation of this data.
+
+\sep
+It helps to begin by arranging the data in ascending order.
+\begin{align}
+    11, 16, 18, 20, 25, 26, 27, 29
+\end{align}
+The range is the largest value minus the smallest value.
+\begin{align}
+    \text{Range} = 29 - 11 = 18
+\end{align}
+To find the mean and standard deviation, we can draw the following table:
+\begin{align}
+\begin{tabular}{lll}
+ & $x$ & $x^2$ \\
+ & 11 & 121 \\
+ & 16 & 256 \\
+ & 18 & 324 \\
+ & 20 & 400 \\
+ & 25 & 625 \\
+ & 26 & 676 \\
+ & 27 & 729 \\
+ & 29 & 841 \\
+Means & 21.5 & 496.5
+\end{tabular}
+\end{align}
+We can now obtain the variance as follows:
+\begin{align}
+    \sigma^2 &= 496.5 - (21.5)^2 \\
+    &= 496.5 - 462.25 \\
+    &= 34.25
+\end{align}
+Therefore, the standard deviation is:
+\begin{align}
+    \sigma &= \sqrt{34.25} \\
+    &= 5.85 \text{ (3sf)}
+\end{align}
+\subtitle{Insight}
+You may have noticed that the variance formula is based on the assumption that $\overline{x^2}$ is greater than or equal to $\bar{x}^2$, because otherwise the variance would be negative and therefore the standard deviation would not be a real number! It turns out that $\overline{x^2}$ is \textit{always} greater than or equal to $\bar{x}^2$ - you may want to think about how you can prove that this is true.
+\end{example}
+You may be wondering what exactly the standard deviation tells us. As aforementioned, it provides information as to how concentrated the data is around the centre. Ideally, about two thirds of the data should be no more than one standard deviation (5.85 in the above example) away from the mean, and about 95\% should be no more than two standard deviations (11.7 in the above example) away. Anything more than two standard deviations away from the mean can be seen as an outlier. These ideas become more apparent when we study the normal distribution in Chapter 19.
