@@ -1,6 +1,6 @@
 # IB Mathematics Helper Textbook
 
-This is a textbook for the [IB Mathematics syllabi](https://www.ibo.org/programmes/diploma-programme/curriculum/mathematics/) created by the helpers in the [/r/IBO Discord server](discord.gg/ibo).
+This is a textbook for the [IB Mathematics syllabi](https://www.ibo.org/programmes/diploma-programme/curriculum/mathematics/) created by the helpers in the [/r/IBO Discord server](https://www.discord.gg/ibo).
 
 ## Information
 
