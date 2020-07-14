@@ -316,6 +316,9 @@ Note that we take the positive square root to stay within the domain of our func
 Most of the probability density functions that we encountered in the previous sections were purely theoretical examples. In real-life examples, however, the value of a CRV is much more likely to be near its average value. One distribution that is very commonly used in such a scenario is known as the \textbf{normal distribution}. 
 
 The normal distribution has an instantly recognisable bell-shaped curve
+\pgfmathdeclarefunction{gauss}{2}{
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}
+}
 \begin{center}
     \begin{tikzpicture}
         \begin{axis}

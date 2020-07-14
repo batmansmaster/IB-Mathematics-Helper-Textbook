@@ -1,86 +1,168 @@
-\usepackage[utf8]{inputenc}
-\usepackage{listings}          % just for this document
+% ---------------------
+% Miscellaneous Imports
+% ---------------------
 
-% document layout
-\usepackage{titlesec}
+% Document
+\usepackage[latin1]{inputenc}
 \usepackage[margin=1in]{geometry} % margins
-\usepackage{comment}
-\usepackage{appendix}
-\usepackage{subfiles}
-\usepackage{parskip}
-\setlength{\parskip}{1em plus 0.1em minus 0.1em} % paragraph spacing
-\usepackage{microtype}
+\usepackage{subfiles} % document modularity (see folders on the left)
+\usepackage{appendix} % appendix formatting
+\usepackage[skip = 1em plus 0.1em minus 0.1em]{parskip} % paragraph spacing
+\usepackage{microtype} % prettier output
 
-% hyperlinks
-\usepackage{hyperref}
+% Debugging
+\usepackage{comment} % multiline comments
+\usepackage{blindtext} % filler text
 
-% math
-\usepackage{mathtools} % loads amsmath
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-% \usepackage{amsthm}
-\usepackage[super]{nth}
+% Math
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools} % various math stuffs
+\usepackage{physics} % tons of useful macros
+\usepackage[super]{nth} % position specifiers (1st, 2nd, ...)
+\newcommand\tss\textsuperscript % text superscript (alias)
 
-% figures and plots
+% Figures/Floating Objects
+\usepackage{float} % improved floating objects
+\usepackage{rotfloat} % rotating (compatible with floating objects)
+\usepackage{subcaption} % arbitrary captions
+\usepackage{wrapfig} % wrapping text
+
+% PGF/TikZ
 \usepackage{xcolor}
-\usepackage{rotating}
-\usepackage{subcaption}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{tikz}
-\usetikzlibrary{trees}
 \usepackage{pgfplots}
-\pgfplotsset{compat = 1.16} % compatibility
-
-% text superscripts
-\usepackage[super]{nth}
-\newcommand\tss\textsuperscript
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=green!40!black,
-    filecolor=magenta,      
-    urlcolor=cyan,
+\usetikzlibrary{trees, calc}
+\pgfplotsset{%
+    compat = 1.16,
 }
 
-\usepackage{physics}
-\usepackage{longtable}
+% Hyperlinks (apparently order is sensitive here)
+\usepackage{varioref} % linking things that are far away (via page numbers)
+\usepackage{nameref} % fixes some issues with anchors
+\usepackage{hyperref} % general hyperlinks
+\usepackage{cleveref} % clever hyperlink referencing
 
+% ------------------------------
+% Formatting Titles and Contents
+% ------------------------------
+
+% Title Formatting
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}
+            [block]
+            {\centering\bfseries\Huge}
+            {}
+            {0pt}
+            {\colorbox{white}{#1}}
+\titleformat{\section}
+            [block]
+            {\Large\bfseries\titlerule\vspace{-1.05ex}}
+            {\thesection\;{\normalfont\textbar}}
+            {0pt}
+            {\hfill#1\hfill}
+            [\vspace{0.5ex}\titlerule]
+\titleformat{\subsection}
+            [block]
+            {\large\bfseries}
+            {\thesubsection\;{\normalfont\textbar}}
+            {1em}
+            {#1\filright}
+            [\titlerule]
+\titlespacing{\section}
+             {0pt}
+             {8ex plus 1ex minus 1ex}
+             {2.3ex plus .2ex}
+
+% Table of Contents Formatting
+\usepackage{titletoc}
+\renewcommand\contentsname{Table of Contents} % toc title
+\setcounter{tocdepth}{1} % toc depth (up to section)
+% \contentsmargin{0pt}
+\titlecontents{part}
+              [0em]
+              {\Large\bfseries}
+              {\thecontentslabel\titlerule*[0.2cm]{|}\ }
+              {\titlerule*[0.2cm]{|}\ }
+              {\ \titlerule*[0.2cm]{|}\contentspage}
+\titlecontents{chapter}
+              [0em]
+              {\large\bfseries}
+              {\thecontentslabel\quad}
+              {}
+              {\;{\normalfont\normalsize\titlerule*[0.2cm]{.}}\contentspage}
+\titlecontents{section}
+              [1.5em]
+              {\normalfont\normalsize}
+              {\thecontentslabel\quad}
+              {}
+              {\;{\normalsize\titlerule*[0.2cm]{.}}\contentspage}
+\titlecontents{subsection}
+              [3em]
+              {\normalfont\small}
+              {\thecontentslabel\quad}
+              {}
+              {\;{\normalsize\titlerule*[0.2cm]{.}}\contentspage}
+\titlecontents{subsubsection}
+              [4.5em]
+              {\normalfont\small}
+              {\thecontentslabel\quad}
+              {}
+              {\;{\normalsize\titlerule*[0.2cm]{.}}\contentspage}
+
+% Miniature Table of Contents (per chapter)
+\usepackage{minitoc}
+\mtcsettitle{minitoc}{} % minitoc title (blank)
+\mtcsetdepth{minitoc}{4} % minitoc depth (up to subsubsection)
+\setlength{\mtcindent}{0pt} % minitoc spacing
+
+% Chapter Drawings Values (percentage heights from top of page)
+\newcommand{\chapterdrawheight}{0.4}
+\newcommand{\chapternameheight}{0.2}
+
+% Chapter Page Macro
+\newenvironment{chapterpage}[4][]{%
+\newpage
+\newgeometry{top=0in, bottom=0in}
+\thispagestyle{empty}
+\begin{tikzpicture}[%
+    remember picture, % required for absolute positioning
+    overlay, % required for absolute positioning
+    shift = {($(current page.north)!\chapternameheight!(current page.south)$)},
+    scale = 2, % shifting and scaling to center origin
+    #1
+]
+% Canvas Extrema Coordinates (defines canvas boundary)
+\coordinate (N) at (current page.north);
+\coordinate (S) at ($(N)!\chapterdrawheight!(current page.south)$);
+\coordinate (C) at ($(N)!\chapternameheight!(current page.south)$);
+\coordinate (W) at (current page.west |- C);
+\coordinate (E) at (current page.east |- C);
+\clip (E|-S) rectangle (W|-N); % clips everything outside canvas boundary
+#4
+\node at (C) {% adding chapter title at origin
+    \begin{minipage}[c]{\textwidth}
+        \chapter{#2}
+    \end{minipage}
+};
+\end{tikzpicture}
+
+\vspace{\chapterdrawheight\textheight}
+
+Written by #3.
+
+\minitoc
+
+\restoregeometry
+}
+
+% Default for Blank Chapter Drawings
+\newcommand\defaultchapter[1]{\chapterpage{#1}{Author (Change \texttt{\textbackslash defaultchapter} to \texttt{\textbackslash chapterpage} to edit this)}{\draw[help lines] (E|-S) grid (W|-N);}}
+
+% ----------------------------------
+% Setting up Boxes (using tcolorbox)
+% ----------------------------------
+
+% Initial Setup
 \usepackage[most]{tcolorbox}
-
-\usepackage{tasks}
-\NewTasksEnvironment[
-    style = enumerate,
-    after-item-skip = -0.3em,
-    after-skip = 0.5em,
-]{question_set}[\item]
-
-% horizontal rule
-% \usepackage{dashrule}
-% \newcommand{\hr}[1][black]{{\noindent\color{#1}\hdashrule[0.5ex][x]{\textwidth}{1pt}{3pt}}}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=green!40!black,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}
-
-\usepackage{physics}
-\usepackage{longtable}
-
-\title{Helper Mathematics Textbook Formatting Guide}
-\author{IBO Helpers}
-\date{June 2020}
-
-\definecolor{maincs}{RGB}{177,0,39}
-\definecolor{secondarycs}{RGB}{255,179,246}
-\definecolor{tertiarycs}{RGB}{0,149,86}
-
-\usepackage{listings}
-\lstset{basicstyle=\ttfamily}
-
 \tcbset{% default box environment settings
     center,
     enhanced,
@@ -102,7 +184,6 @@
         colframe=colorformula
     }
 }
-
 \newcommand{\makeboxtype}[4][]{% box environment creation command
     \newtcolorbox[auto counter, number within=section]{#2}[2][]{
         colback = #4!15,
@@ -115,10 +196,7 @@
     }
 }
 
-% horizontal rule
-\newcommand{\hr}[1][black]{{\noindent\color{#1}\hdashrule[0.5ex][x]{\textwidth}{1pt}{3pt}}}
-
-% Color definitions (corresponding with the environments)
+% Color Definitions (corresponding with the environments)
 \colorlet{colorexample}{orange}
 \colorlet{colorthinking}{pink}
 \colorlet{colordefinition}{red}
@@ -129,7 +207,7 @@
 \colorlet{colorsummary}{lime!85!black}
 \colorlet{colorformula}{teal!40!black}
 
-% Creation of different box environments
+% Creation of Different Box Environments
 \makeboxtype{example}{Example \thetcbcounter: }{colorexample}
 \makeboxtype{thinking}{Thinking Question \thetcbcounter: }{colorthinking}
 \makeboxtype{definition}{Definition \thetcbcounter: }{colordefinition}
@@ -140,38 +218,58 @@
 \makeboxtype{summary}{Summary \thetcbcounter: }{colorsummary}
 \makeboxtype{questions}{Questions \thetcbcounter: }{colorformula}
 % \makeboxtype{formula}{Formula \thetcbcounter: }{colorformula}
-
-% Formula box
-\newcommand{\formula}[3][colorformula]{
-    \if\relax\detokenize{#3}\relax
-      \begin{equation*}
+\newcommand{\formula}[3][colorformula]{% formula box (special definition)
+    \begin{equation*}\if\relax\detokenize{#3}\relax
+                     \else
+                         \label{eq:#3}\tag{#3}
+                     \fi
         \tcbhighmath[colback=#1!15, colframe=#1]{#2}
     \end{equation*}
-    \else
-      \begin{equation*}\label{eq:#3}\tag{#3}
-        \tcbhighmath[colback=#1!15, colframe=#1]{#2}
-    \end{equation*}
-    \fi
 }
-% \renewenvironment{formula}{THIS NEEDS FIXING \begin{lstlisting}}{\end{lstlisting}}
 
-% Example text
-\newcommand{\filltext}{This is a bunch of filler text. Ignore this text. Do not read this text. There is no information contained within this text. This text simply exists to fill the space within whatever container this text exists in.}
+% Creating Command Aliases
+\newcommand\subtitle\tcbsubtitle % subtitles
+\newcommand\sep\tcblower % horizontal rules
 
-% redefined align environment (because spacing issues)
-\renewenvironment{align}[1][]{\[\begin{aligned}[#1]}{\end{aligned}\]}
+% Tasks Environments
+\usepackage{tasks}
+\NewTasksEnvironment[%
+    style = enumerate,
+    after-item-skip = -0.3em,
+    after-skip = 0.5em,
+]{question_set}[\item]
+\usepackage{enumitem}
 
-% renaming tcolorbox macros/introducing horizontal rules
-\newcommand\subtitle\tcbsubtitle
-\newcommand\sep\tcblower
+% Horizontal Rules
+\usepackage{dashrule}
+\newcommand{\hr}[1][black]{{\noindent\color{#1}\hdashrule[0.5ex][x]{\textwidth}{1pt}{3pt}}}
 
-\renewcommand{\b}[1]{\textbf{#1}} % bold shorthand
-\renewcommand{\i}[1]{\emph{#1}} % italics shorthand
-\newcommand{\n}[1]{\text{#1}} % text in math environment shorthand
+% -------------
+% Custom Macros
+% -------------
 
-% referencing discord users
-\newcommand{\user}[1]{{\fontfamily{cmtt}\selectfont#1}}
+% Contributors
+\newcommand\Andrew{\texttt{AdventurousAndrew\#7499}}
+\newcommand\Cyanine{\texttt{cyanine\#2306}}
+\newcommand\Lake{\texttt{Lake\#3557}}
+\newcommand\Juan{\texttt{JuanSilesia\#6232}}
+\newcommand\Potato{\texttt{SemiSweetPotato\#5188}}
+\newcommand\Athurus{\texttt{Athurus\#2418}}
+\newcommand\Creative{\texttt{CreativeUsername1\#6400}}
+\newcommand\Batsy{\texttt{batmansmaster\#0101}}
+\newcommand\Prox{\texttt{Proxentauri\#6434}}
+\newcommand\Rshields{\texttt{RShields\#5160}}
 
-\pgfmathdeclarefunction{gauss}{2}{%
-  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
-}
+% Mathematical Shorthands
+\newcommand\bb\mathbb % \mathbb alias
+\newcommand\N{\bb{N}} % naturals
+\newcommand\C{\bb{C}} % complex numbers
+\newcommand\R{\bb{R}} % reals
+\newcommand\Q{\bb{Q}} % rationals
+\newcommand\Z{\bb{Z}} % integers
+
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+
+% define matrix shortcut
+\newcommand{\mat}[1]{{\begin{bmatrix}#1\end{bmatrix}}}

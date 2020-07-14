@@ -1,5 +1,4 @@
 \chapter{Differential Equations and Power Series}
-
 Differential Equations, as the name suggests, is solving an equation that involves differentials or derivatives. It is analogous to solving any algebraic equation in an attempt to find a real or perhaps a complex valued solution, except this solution is not a number, but a function. In this unit we explore different methods to solving such equations.
 
 \section{Separable Differential Equations}
@@ -15,7 +14,7 @@ where $k \in \mathbb{R}$. Ideally we would want some solution, $y(t)$, that sati
 
 Before reading ahead consider the following, we can first attempt to analyse the differential equation and 'visualise' a solution. What (\ref{equation:30.1}) is essentially saying is that the derivative of the function is some constant $k$ multiplied by the function once again.
 \\
-What function(s) has similar if not the same properties as this?
+What function(s) have similar if not the same properties as this?
 \end{thinking}
 
 If you stopped to think about it for a second, you may have thought of $y(t)=e^{kt}$ as a potential candidate for a solution, and we can indeed check that it does satisfy (\ref{equation:30.1}).
@@ -43,16 +42,11 @@ $\therefore \ln{|y(t)|}+C_{1}=kt+C_{2}$, for some constants $C_{1},C_{2} \in \ma
 \begin{insight}{~}
 
 When performing regular integrals we generally add a C at the end of the integration. While it is valid when solving differential equations to add the constant on both sides, we can see that in the example it is sufficient to only add a constant to one side of the equation (it just so happens this is the case in general). Additionally, note that we often make substitutions of constants to make the solution look 'neater' in the case of Example~\ref{example:30.1} we made the substitution $A=e^C$, you will find this trick useful in a lot of cases to come.
-
 \end{insight}
 
 In some cases we may be given an initial value to the function and are asked to solve for the particular solution to the differential equation. For example if we take $y(t)$ as the general solution to (\ref{equation:30.1}), and are given that $y(0)=1$, we may solve for $A$ for this particular initial value as follows,
-
 $$y(0)=1=Ae^{0k}=A \implies y(t)=e^{kt},$$
-
 which is the original function that may have been guessed in the beginning.
-
-\newpage
 
 \begin{example}{Almost a separable differential equation}
 Find the particular solution to the differential equation,
@@ -65,56 +59,51 @@ $$\int \frac{1}{1+y^2}\mathrm{d}y=\int x^2dx \implies \arctan(y)=\frac{1}{3}x^3+
 Then solving for $C$ using our initial conditions,
 $$\arctan(1)=\frac{1}{3}(0)^3+C \implies C=\frac{\pi}{4} \ \therefore y(x)=\tan\left(\frac{1}{3}x^3+\frac{\pi}{4}\right)$$
 \end{example}
+\begin{questions}{Drills}
+You may choose the write the solution in the form $y=f(x)$, but it is not necessary.
+
+\vspace{5pt}
+Find the general solution to the following differential equations.
+\vspace{5pt}
+\begin{question_set}(2)
+\item $\dv{y}{x}=\frac{y}{x}$
+\item $\dv{y}{x}=\frac{\sin(x)}{\cos(y)}$ \\
+\item $\dv{y}{x}=\frac{1+y^2}{1+x^2}$
+\item $x\dv{y}{x}-9=y^2$
+\end{question_set}
+\smallskip
+\end{questions}
+
+\section{Euler's Method for Approximating Differential Equations}
+
+
 
 \section{Homogeneous Differential Equations}
-Some differential equations you may come across will need a specific substitution in order to be solved, for example, letting $y(x)=v(x)\sin(x)$ for some function $v$ we wish to solve for. Homogeneous differential equations require a very specific substitution in order to be solved which will be shown in the proof of theorem~\ref{theorem:30.1}.
+Some differential equations you may come across will need a specific substitution in order to be solved, for example, letting $y(x)=v(x)\sin(x)$ for some function $v$ we wish to solve for.
 \begin{definition}{~}
 A function, $F$, is said to be homogeneous of degree $n$ if the following holds,
-$$F(tx_1,tx_2,...,tx_n)=t^nF(x_1,x_2,...,x_n) \ \text{for all} \ t,x_i \in X, \ \text{where $X$ is the domain of F.}$$
+$$F(tx_1,tx_2,...,tx_n)=t^nF(x_1,x_2,...,x_n) \ \text{for all} \ t \ \text{and} \ x_i \ \text{for which $F$ is defined.}$$
 \end{definition}
-\begin{theorem}{All Homogeneous D.E.s are solvable}\label{theorem:30.1}
-Let $f(x,y)$ be a homogeneous function of order $0$, then the following differential equation,
-$$\frac{\mathrm{d}y}{\mathrm{d}x}=f(x,y)\text{,}$$
-always has a solution which may or may not be in terms of elementary functions, additionally the solution may be implicit in some cases. This family of differential equations are called homogeneous differential equations.
-\end{theorem}
 
-\newpage
+\begin{definition}{~}\label{definition:30.2}
+Define $f(x,y)$ to be a function who is homogeneous of degree $0$, then the following differential equation is said to be a homogeneous differential equation,
+$$\dv{y}{x}=f(x,y).$$
+\end{definition}
 
-\begin{proof}{Theorem~\ref{theorem:30.1}}
-Let $f(x,y)$ be defined as in Theorem~\ref{theorem:30.1}, and let $y=ux$, for some function $u(x)$ to be determined. Suppose we want to solve the following homogeneous differential equation,
-$$\frac{\mathrm{d}y}{\mathrm{d}x}=f(x,y)\text{.}$$
-Using our substitution, we solve for $\frac{\mathrm{d}y}{\mathrm{d}x}$,
-$$y=ux \implies \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}}{\mathrm{d}x}(ux)=x\frac{\mathrm{d}u}{\mathrm{d}x}+u\text{.}$$
-Then substitute everything into our differential equation to obtain,
-$$x\frac{\mathrm{d}u}{\mathrm{d}x}+u=f(x,ux) \implies \frac{\mathrm{d}u}{\mathrm{d}x}=(f(1,u)-u)\left(\frac{1}{x}\right)$$
-This is now a separable differential equation in terms of $u(x)$, which we know how to solve, and we also know the relationship between $y(x)$ and $u(x)$, so we can subsequently solve for $y(x)$.
-\smallskip
-
-Remark: We must consider the case that $f(1,u)=u$ as this would result in division by $0$ in the regular procedure, let us solve the differential equation as if this were the case.
-\smallskip
-
-Suppose that $f(1,u)-u=0$, this would imply that,
-$$\frac{\mathrm{d}u}{\mathrm{d}x}=0, \ \therefore u(x)=C \in \mathbb{R} \implies y(x)=Cx$$
-Which is the solution to our differential equation if indeed this was the case, so let us now assume that $f(1,u)-u \neq 0$ to solve for all other cases.
-$$\therefore \int \frac{\mathrm{d}u}{f(1,u)-u}=\ln|x|+A, \ \text{for some constant $A \in \mathbb{R}$}$$
-Second Remark: Note that the integrand may not have an elementary anti-derivative, and thus why we must include the statement in the theorem that the solution may not be elementary. \\
-Let the primitive (anti-derivative) of,
-$$\frac{1}{f(1,u)-u} \text{ be } F(u), \text{ for some function $F$.}$$
-Then we may conclude that the implicit solution to our differential equation takes the form,
-$$F\left(\frac{y}{x}\right)=\ln|x|+A \qquad\blacksquare$$
-\end{proof}
+The solution to a homogeneous differential equation can be found through a specific substitution namely, $y(x)=u(x)x$, which will be demonstrated in example~\ref{example:30.2}.
 
 \begin{example}{Solving Homogeneous D.E.s}\label{example:30.2}
 
 Find a general solution to the differential equation,
-$$(2x^3+y^3)dx-3xy^2dy=0$$
+$$(x^3+y^3)dx-xy^2dy=0$$
 \sep
 We can rearrange the differential equation to the following form,
 $$\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{x^3+y^3}{xy^2}=\frac{x^3}{xy^2}+\frac{y^3}{xy^2}=\frac{x^2}{y^2}+\frac{y}{x}$$
-One can notice that this is indeed a homogeneous differential equation, so we make the substitutions as in the proof of theorem~\ref{theorem:30.1} to get the following differential equation.
-$$x\frac{\mathrm{d}u}{\mathrm{d}x}+u=\frac{1}{u^2}+u \implies \int u^2 du=\int \frac{1}{x} dx$$
+One can check that this is indeed a homogeneous differential equation, so we make the substitution $y=ux$.
+$$y=ux \implies \dv{y}{x}=x\dv{u}{x}+u,$$
+$$\therefore \ x\frac{\mathrm{d}u}{\mathrm{d}x}+u=\frac{1}{u^2}+u \implies \int u^2 du=\int \frac{1}{x} dx.$$
 Then finally we can find the solution to our differential equation,
-$$\frac{1}{3}u^3= \ln|x|+C, \ C \in \mathbb{R} \implies y(x)=x \left(3 \ln|x|+C' \right)^\frac{1}{3}, \ C'=3C$$
+$$\frac{1}{3}u^3= \ln|x|+C, \ C \in \mathbb{R} \implies y(x)=x \left(3 \ln|x|+C' \right)^\frac{1}{3}, \ C'=3C.$$
 \end{example}
 \begin{insight}{~}
 
@@ -165,26 +154,31 @@ You need to be careful especially in these types of cases where you may have two
 \begin{questions}{Drills}
 You may choose the write the solution in the form $y=f(x)$, but it is not necessary.
 
+\vspace{5pt}
 Find the general solution to the following differential equations.
+\vspace{5pt}
 \begin{question_set}(2)
-\item 
-\item test2
-\item test3
-\item test4
-\item test5
-\item test6
+\item $\dv{y}{x}=\left(\frac{y}{x}\right)^2+1$
+\item $\dv{y}{x}=\frac{x+y}{x}$ \\
+\item $\dv{y}{x}=\frac{x+y}{y}$
+\item $\dv{y}{x}=\sec\left(\frac{y}{x}\right)+\frac{y}{x}$
 \end{question_set}
-
-Find the particular solution to the following differential equations
+\vspace{5pt}
+Find the particular solution to the following differential equations.
+\vspace{5pt}
 \begin{question_set}(2)
-\item test1
-\item test2
-\item test3
-\item test4
-\item test5
-\item test6
+\item $\dv{y}{x}=\frac{x^2+y^2}{x^2}, \ y(1)=0$
+\item $\dv{y}{x}=\frac{y^3+x^2y}{x^3}, \ y(1)=1$ \\
+\item $\dv{y}{x}=\frac{y}{x}(1+\frac{x^2}{y^2}e^{-(\frac{y}{x})^2}), \ y(1)=1$
+\item $x^4\dv{y}{x}=x^3y-y^4, \ y(1)=1$ \\
 \end{question_set}
 \end{questions}
 
+\begin{thinking}{~}
+The benefit of defining a homogeneous differential equation in terms of a homogeneous function, rather than exclusively to a function of the form $f(x/y)$, is that we can explore what happens if we perhaps let $f(x,y)$ be homogeneous of order $n \neq 1$. \vspace{10pt}
 
+What might happen to the differential equation in definition~\ref{definition:30.2} if $f(x,y)$ was not homogeneous of order $1$, but rather of order $2$, $3$, $-1$, etc., is there a solution in general, or none?
+\end{thinking}
+
+\section{Integrating Factor}
 
