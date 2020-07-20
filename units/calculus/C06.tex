@@ -1,0 +1,191 @@
+\documentclass[../../main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Differential Equations and Power Series}
+
+Differential Equations, as the name suggests, is solving an equation that involves differentials or derivatives. It is analogous to solving any algebraic equation in an attempt to find a real or perhaps a complex valued solution, except this solution is not a number, but a function. In this unit we explore different methods to solving such equations.
+
+\section{Separable Differential Equations}
+
+Consider the differential equation,
+\begin{equation}\label{equation:30.1}
+\frac{\mathrm{d}y(t)}{\mathrm{d}t}=ky(t)\text{,}
+\end{equation}
+
+where $k \in \mathbb{R}$. Ideally we would want some solution, $y(t)$, that satisfies this differential equation.
+
+\begin{thinking}{~}
+
+Before reading ahead consider the following, we can first attempt to analyse the differential equation and 'visualise' a solution. What (\ref{equation:30.1}) is essentially saying is that the derivative of the function is some constant $k$ multiplied by the function once again.
+\\
+What function(s) have similar if not the same properties as this?
+\end{thinking}
+
+If you stopped to think about it for a second, you may have thought of $y(t)=e^{kt}$ as a potential candidate for a solution, and we can indeed check that it does satisfy (\ref{equation:30.1}).
+
+$$\frac{\mathrm{d}y(t)}{\mathrm{d}t}=\frac{\mathrm{d}}{\mathrm{d}t}e^{kt}=ke^{kt}=ky(t)\text{.}$$
+
+However is this the only solution to our differential equation, if not, how do we find the rest? In a more general case, how would we solve any arbitrary differential equation? In general most differential equation unfortunately don't have solutions and we resort to numerical methods to solve them (which we will explore later). One of those that do indeed have a solution (which may or may not be in terms of elementary functions) are separable differential equations.
+
+\begin{definition}{~}
+A differential equation is said to be separable if it is of the form,
+$$\frac{\mathrm{d}y}{\mathrm{d}t}=g(y)f(t) \ \text{for some functions $g$ and $f$.}$$
+\end{definition}
+
+We can solve such separable differential equations, by first dividing by $g(y)$ and multiplying by $\mathrm{d}t$ on both sides, and subsequently integrating both sides. This is illustrated in Example~\ref{example:30.1}
+
+\begin{example}{Solution to our first example}\label{example:30.1}
+Find a solution to (\ref{equation:30.1}).
+
+\sep
+This differential equation is separable, if we let $g(y)=y(t)$ and $f(t)=k$, dividing both sides by $g(y)$ and multiplying both sides by $\mathrm{d}t$ we obtain the following,
+$$\frac{1}{y(t)}\mathrm{d}y(t)=k\mathrm{d}t \implies \int\frac{1}{y(t)}\mathrm{d}y(t)=\int k \mathrm{d}t$$
+$\therefore \ln{|y(t)|}+C_{1}=kt+C_{2}$, for some constants $C_{1},C_{2} \in \mathbb{R}$. We can let some constant $C=C_{2}-C_{1}$, then $\ln{|y|}=kt+C$. A small amount of algebra and one more substitution, letting some $A=e^C$, leaves us with the general solution to our differential equation, $y(t)=Ae^{kt}$ (you may check that this does indeed solve our differential equation for all values of $A$).
+\end{example}
+
+\begin{insight}{~}
+
+When performing regular integrals we generally add a C at the end of the integration. While it is valid when solving differential equations to add the constant on both sides, we can see that in the example it is sufficient to only add a constant to one side of the equation (it just so happens this is the case in general). Additionally, note that we often make substitutions of constants to make the solution look 'neater' in the case of Example~\ref{example:30.1} we made the substitution $A=e^C$, you will find this trick useful in a lot of cases to come.
+\end{insight}
+
+In some cases we may be given an initial value to the function and are asked to solve for the particular solution to the differential equation. For example if we take $y(t)$ as the general solution to (\ref{equation:30.1}), and are given that $y(0)=1$, we may solve for $A$ for this particular initial value as follows,
+$$y(0)=1=Ae^{0k}=A \implies y(t)=e^{kt},$$
+which is the original function that may have been guessed in the beginning.
+
+\begin{example}{Almost a separable differential equation}
+Find the particular solution to the differential equation,
+$$\frac{\mathrm{d}y}{\mathrm{d}x}-(xy)^2=x^2, \ y(0)=1$$
+\sep
+While currently it is not in the form we want, we can manipulate it and turn it into a separable differential equation by doing the following,
+$$\frac{\mathrm{d}y}{\mathrm{d}x}-(xy)^2=y^2 \implies \frac{\mathrm{d}y}{\mathrm{d}x}=x^2(1+y^2).$$
+We now see that it is of the form that we want and can thus separate the variables.
+$$\int \frac{1}{1+y^2}\mathrm{d}y=\int x^2dx \implies \arctan(y)=\frac{1}{3}x^3+C$$
+Then solving for $C$ using our initial conditions,
+$$\arctan(1)=\frac{1}{3}(0)^3+C \implies C=\frac{\pi}{4} \ \therefore y(x)=\tan\left(\frac{1}{3}x^3+\frac{\pi}{4}\right)$$
+\end{example}
+\begin{questions}{Drills}
+You may choose the write the solution in the form $y=f(x)$, but it is not necessary.
+
+\vspace{5pt}
+Find the general solution to the following differential equations.
+\vspace{5pt}
+\begin{question_set}(2)
+\item $\dv{y}{x}=\frac{y}{x}$
+\item $\dv{y}{x}=\frac{\sin(x)}{\cos(y)}$ \\
+\item $\dv{y}{x}=\frac{1+y^2}{1+x^2}$
+\item $x\dv{y}{x}-9=y^2$
+\end{question_set}
+\smallskip
+\end{questions}
+
+\section{Euler's Method for Approximating Differential Equations}
+
+
+
+\section{Homogeneous Differential Equations}
+Some differential equations you may come across will need a specific substitution in order to be solved, for example, letting $y(x)=v(x)\sin(x)$ for some function $v$ we wish to solve for.
+\begin{definition}{~}
+A function, $F$, is said to be homogeneous of degree $n$ if the following holds,
+$$F(tx_1,tx_2,...,tx_n)=t^nF(x_1,x_2,...,x_n) \ \text{for all} \ t \ \text{and} \ x_i \ \text{for which $F$ is defined.}$$
+\end{definition}
+
+\begin{definition}{~}\label{definition:30.2}
+Define $f(x,y)$ to be a function who is homogeneous of degree $0$, then the following differential equation is said to be a homogeneous differential equation,
+$$\dv{y}{x}=f(x,y).$$
+\end{definition}
+
+The solution to a homogeneous differential equation can be found through a specific substitution namely, $y(x)=u(x)x$, which will be demonstrated in example~\ref{example:30.2}.
+
+\begin{example}{Solving Homogeneous D.E.s}\label{example:30.2}
+
+Find a general solution to the differential equation,
+$$(x^3+y^3)dx-xy^2dy=0$$
+\sep
+We can rearrange the differential equation to the following form,
+$$\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{x^3+y^3}{xy^2}=\frac{x^3}{xy^2}+\frac{y^3}{xy^2}=\frac{x^2}{y^2}+\frac{y}{x}$$
+One can check that this is indeed a homogeneous differential equation, so we make the substitution $y=ux$.
+$$y=ux \implies \dv{y}{x}=x\dv{u}{x}+u,$$
+$$\therefore \ x\frac{\mathrm{d}u}{\mathrm{d}x}+u=\frac{1}{u^2}+u \implies \int u^2 du=\int \frac{1}{x} dx.$$
+Then finally we can find the solution to our differential equation,
+$$\frac{1}{3}u^3= \ln|x|+C, \ C \in \mathbb{R} \implies y(x)=x \left(3 \ln|x|+C' \right)^\frac{1}{3}, \ C'=3C.$$
+\end{example}
+\begin{insight}{~}
+
+In most texts homogeneous differential equations are introduced as any differential equation that takes the form,
+$$\frac{\mathrm{d}y}{\mathrm{d}x}=g\left(\frac{y}{x}\right),$$
+which you can see is indeed true in the case of Example~\ref{example:30.2}. However, you might agree that introducing homogeneous differential equations like this doesn't justify the particular naming of such a differential equation. In fact, it is relatively simple to prove that if $f(x,y)$ is homogeneous of order $0$, then $f(x,y)$ takes the form $g\left(\frac{y}{x}\right)$ for some function $g$. Try it for yourself! \\
+\textbf{Hint:} First define $g(z)$ to be $f(1,z)$, for some $z$ in the domain of $f$.
+
+\end{insight}
+
+\newpage
+
+\begin{example}{~}
+Find the particular solution to the differential equation,
+$$\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{x-y}{x+y}, \ y(0)=y_0$$
+\sep
+First we check if $f(x,y)=\frac{x-y}{x+y}$ is homogeneous of order $0$, and indeed it is because,
+$$f(tx,ty)=\frac{tx-ty}{tx+ty}=\frac{t(x-y)}{t(x+y)}=\frac{x-y}{x+y}=f(x,y).$$
+Now apply the substitution $y=ux$,
+$$x\frac{\mathrm{d}u}{\mathrm{d}x}+u=\frac{1-u}{1+u},$$
+$$\therefore \frac{\mathrm{d}u}{\mathrm{d}x}=\frac{1-2u-u^2}{x(1+u)},$$
+$$\therefore \int\frac{1+u}{1-2u-u^2}\mathrm{d}u=\ln|x|+C, \text{for some $C \in \mathbb{R}$}.$$
+Let us focus on the integral, call it $I$. Make the substitution $w=1-2u-u^2$, then $-\frac{1}{2}\mathrm{d}w=(1+u)\mathrm{d}u$
+$$\therefore I=-\frac{1}{2}\int \frac{1}{w}\mathrm{d}w \implies I=-\frac{1}{2}\ln|1-2u-u^2|(+ \ C_{2}).$$
+Now let $C=\ln(k)$ for some real number $k$, then we can use log properties and some algebra to conclude that,
+$$(1-2u-u^2)^{-\frac{1}{2}}=kx \implies 1-2\frac{y}{x}-\left(\frac{y}{x}\right)^2=\frac{1}{k^2x^2}.$$
+Multiply through by $-x^2$ and substituting another constant $-\frac{1}{k^2}=\beta$ we get,
+$$y^2+2yx-x^2=\beta \implies (y+x)^2=\beta+2x^2.$$
+$$\therefore y(x)= \pm\sqrt{\beta+2x^2}-x, \text{ for some } \beta \in \mathbb{R}.$$
+Finally, we apply the initial condition, plug in the information $y(0)=y_0$.
+$$(y_0+0)^2=\beta+2(0)^2 \implies \beta = y_0^2$$
+Then our particular solution to the differential equation becomes,
+\[
+y(x)=
+\begin{cases}
+\sqrt{y_0^2+2x^2}-x & \text{if $y_0 \geq 0$} \\
+-\sqrt{y_0^2+2x^2}-x & \text{if $y_0<0$}
+\end{cases}
+\]
+\end{example}
+
+\newpage
+
+Remark: The reason for this piece wise definition is because notice, if we take $y_0>0$ for example, then we get that $y_0=\pm\sqrt{y_0^2}=\pm|y_0|$ from the definition of $y(x)$ we found with $\beta$. Then since we chose $y_0>0$, $|y_0|=y_0,$ therefore, $y_0=\pm y_0$, so in particular we take the positive branch for $y_0>0$, which is reflected in the piece wise definition. Try and convince yourself why the negative branch was chosen for $y_0<0$.
+You need to be careful especially in these types of cases where you may have two or more solutions for differential equations (for a fixed constant), in this case it was the $\pm$ (note that the point $y_0=0$ can be to given to either of the equations).
+
+
+\begin{questions}{Drills}
+You may choose the write the solution in the form $y=f(x)$, but it is not necessary.
+
+\vspace{5pt}
+Find the general solution to the following differential equations.
+\vspace{5pt}
+\begin{question_set}(2)
+\item $\dv{y}{x}=\left(\frac{y}{x}\right)^2+1$
+\item $\dv{y}{x}=\frac{x+y}{x}$ \\
+\item $\dv{y}{x}=\frac{x+y}{y}$
+\item $\dv{y}{x}=\sec\left(\frac{y}{x}\right)+\frac{y}{x}$
+\end{question_set}
+\vspace{5pt}
+Find the particular solution to the following differential equations.
+\vspace{5pt}
+\begin{question_set}(2)
+\item $\dv{y}{x}=\frac{x^2+y^2}{x^2}, \ y(1)=0$
+\item $\dv{y}{x}=\frac{y^3+x^2y}{x^3}, \ y(1)=1$ \\
+\item $\dv{y}{x}=\frac{y}{x}(1+\frac{x^2}{y^2}e^{-(\frac{y}{x})^2}), \ y(1)=1$
+\item $x^4\dv{y}{x}=x^3y-y^4, \ y(1)=1$ \\
+\end{question_set}
+\end{questions}
+
+\begin{thinking}{~}
+The benefit of defining a homogeneous differential equation in terms of a homogeneous function, rather than exclusively to a function of the form $f(x/y)$, is that we can explore what happens if we perhaps let $f(x,y)$ be homogeneous of order $n \neq 1$. \vspace{10pt}
+
+What might happen to the differential equation in definition~\ref{definition:30.2} if $f(x,y)$ was not homogeneous of order $1$, but rather of order $2$, $3$, $-1$, etc., is there a solution in general, or none?
+\end{thinking}
+
+\section{Integrating Factor}
+
+\end{document}
+
